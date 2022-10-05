@@ -23,4 +23,6 @@ RUN cd libkeyfinder/build && ctest --parallel ${CMAKE_BUILD_PARALLEL_LEVEL}
 RUN cd keyfinder-cli/ && make
 RUN cd keyfinder-cli/ && PREFIX=usr/_installs make install
 
-ENTRYPOINT [ "keyfinder-cli" ]
+WORKDIR /
+COPY ./run.sh /
+ENTRYPOINT [ "sh", "run.sh" ]
